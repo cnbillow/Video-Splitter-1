@@ -6,7 +6,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 public class FileManager {
@@ -19,8 +18,8 @@ public class FileManager {
 	 * uses the file chooser to get a file, the user will be prompted to chose an mp4 file
 	 * but if the user choses a different format file it will warn the user that that format is not 
 	 * currently compatible with the user
-	 * @param tfInputFilePath
-	 * @param tfOutputFilePath
+	 * @param tfInputFilePath - the text field so i can add the absolute directory path for the user
+	 * @param tfOutputFilePath - the text field so i can fill it in for the user
 	 * @return
 	 */
 	public boolean getFile(TextField tfInputFilePath, TextField tfOutputFilePath){
@@ -57,7 +56,7 @@ public class FileManager {
 		chooser.showOpenDialog(null);
 		outputDirectory = chooser.getSelectedFile().getAbsolutePath();
 		if(checkIfItsADirectory(outputDirectory) == true){
-			tfOutputFilePath.setText(outputDirectory + "\\");			
+			tfOutputFilePath.setText(outputDirectory +  System.getProperty("file.separator"));			
 			return true;
 		}else{
 			return false;
@@ -106,8 +105,34 @@ public class FileManager {
 		}
 	}
 	
-	public boolean splitCurrentVideo(){
-		
-		return true;
+	/**
+	 * Does one alst check on the textfield incase the user has changed something
+	 * @param pathToFile - the absolute path to the file they ahve selected
+	 * @param pathtoOutputPath - the output path to which the files will be saved at
+	 * @return boolean depening on whether they both are okay or one is wrong
+	 */
+	public boolean checkTextFields(String pathToFile, String pathtoOutputPath){
+		File file = new File(pathToFile);
+		if((checkFileFormat(file, extention) == true) && (checkIfItsADirectory(pathtoOutputPath) ==  true)){
+			return true;			
+		}else{
+			return false;
+		}
+	}
+	
+	/**
+	 * returns current selected path
+	 * @return
+	 */
+	public File getFile(){
+		return currentFile;
+	}
+	
+	/**
+	 * returns currently outputPath
+	 * @return
+	 */
+	public String getOutputPath(){
+		return outputDirectory;
 	}
 }

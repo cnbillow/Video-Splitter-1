@@ -1,13 +1,5 @@
 package application;
 
-import java.io.File;
-
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
-import javax.swing.filechooser.FileNameExtensionFilter;
-
-import com.sun.javafx.util.Utils;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -52,9 +44,9 @@ public class Application_Split_Menu_Screen{
 			correctOutputPath = fileEditor.getOutputPath(tfOutputFilePath);
 			//Split Button Pressed
 		}else{
-			if(fileEditor.checkTextFields() == true){
+			if(fileEditor.checkTextFields(tfInputFilePath.getText(), tfOutputFilePath.getText()) == true){
 				if(correctVideoFile == true && correctOutputPath == true){
-					fileEditor.splitCurrentVideo();
+					//TODO SPLIT VIDEO
 				}				
 			}
 		}

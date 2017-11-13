@@ -15,6 +15,9 @@ public class Main extends Application implements Constants{
 
 	}
 
+	/**
+	 * rUNS WHEN APPLIACTION IS STARTED
+	 */
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
@@ -33,6 +36,9 @@ public class Main extends Application implements Constants{
 		
 	}
 	
+	/**
+	 * rUNS WHEN APPLICATION IS CLOSED
+	 */
 	@Override
 	public void stop(){
 		
