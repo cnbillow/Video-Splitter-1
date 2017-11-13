@@ -1,0 +1,40 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+/*
+ * Button Styles
+ */
+Button{
+	-fx-text-fill: #000000;
+	-fx-background-color: #FFFFFF;
+	-fx-font-weight: bold;
+	-fx-border-radius: 0 0 0 0;
+}
+
+Button:pressed{
+	-fx-text-fill: #FFFFFF;
+	-fx-background-color: #000000;
+	-fx-font-weight: bold;
+	-fx-border-radius: 0;
+}
+
+Button:hover{
+	-fx-text-fill: #FFFFFF;
+	-fx-background-color: #000000;
+	-fx-font-weight: bold;
+	-fx-border-radius: 0;
+	-fx-cursor: pointer;
+}
+
+/*
+ * Background color for anything but the
+ * main page. 
+ */
+.settingsBackground{
+	-fx-background-color: #F5F5F5;
+}
+
+/*
+ * Main page background
+ */
+.mainPageBackground{
+	-fx-background-color: #e53935;
+}
