@@ -24,6 +24,8 @@ public class Application_Split_Menu_Screen{
 	Slider sVideoEnding;
 	
 	FileManager fileEditor;
+	VideoEditor video;
+	
 	boolean correctVideoFile = false;
 	boolean correctOutputPath = false;
 	
@@ -47,6 +49,9 @@ public class Application_Split_Menu_Screen{
 			if(fileEditor.checkTextFields(tfInputFilePath.getText(), tfOutputFilePath.getText()) == true){
 				if(correctVideoFile == true && correctOutputPath == true){
 					//TODO SPLIT VIDEO
+					video.setVideo(fileEditor.getFile());
+					video.splitVideo();
+					video.saveVideo();
 				}				
 			}
 		}

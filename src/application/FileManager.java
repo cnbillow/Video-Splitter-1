@@ -120,6 +120,9 @@ public class FileManager {
 		}
 	}
 	
+	public void getVideoInfo(){
+		
+	}
 	/**
 	 * returns current selected path
 	 * @return

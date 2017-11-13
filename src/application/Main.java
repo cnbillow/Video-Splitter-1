@@ -2,6 +2,8 @@ package application;
 
 import java.util.prefs.Preferences;
 
+import javax.swing.JOptionPane;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -41,6 +43,6 @@ public class Main extends Application implements Constants{
 	 */
 	@Override
 	public void stop(){
-		
+		JOptionPane.showMessageDialog(null, "Thank You! Eventhing Should be Done");
 	}
 }
