@@ -11,7 +11,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Application_Split_Menu_Screen">
    <center>
-      <VBox prefHeight="328.0" prefWidth="560.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="328.0" prefWidth="560.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
             <Label text="File Path/Name:" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
@@ -44,10 +44,16 @@
                </children>
             </HBox>
             <Label text="Video Interval:" />
+            <TextField fx:id="tfIntervalAdding" />
             <Slider showTickLabels="true" showTickMarks="true" />
-            <Label text="Video Cropping:" />
-            <Slider showTickLabels="true" showTickMarks="true" />
-            <Slider blockIncrement="1.0" showTickLabels="true" showTickMarks="true" />
+            <Label text="Video Info:" />
+            <HBox alignment="CENTER" prefHeight="10.0" prefWidth="520.0" spacing="20.0">
+               <children>
+                  <Label text="Video Name:" />
+                  <Label text="Video Length: " />
+                  <Label text="Video Size:" />
+               </children>
+            </HBox>
          </children>
          <BorderPane.margin>
             <Insets bottom="10.0" left="20.0" right="20.0" top="20.0" />
@@ -58,6 +64,6 @@
       </VBox>
    </center>
    <bottom>
-      <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="41.0" prefWidth="600.0" onAction="#buttonPressed" text="Split" BorderPane.alignment="CENTER" />
+      <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#buttonPressed" prefHeight="41.0" prefWidth="600.0" text="Split" BorderPane.alignment="CENTER" />
    </bottom>
 </BorderPane>

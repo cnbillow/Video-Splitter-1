@@ -1,38 +1,43 @@
 package application;
 
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
-public class Application_Split_Menu_Screen{
+public class Application_Split_Menu_Screen implements Constants{
 	
 	@FXML
-	Button btnInputFilePath;
+	private Button btnInputFilePath;
 	@FXML
-	Button btnOutputFilePath;
+	private Button btnOutputFilePath;
 	@FXML
-	TextField tfInputFilePath;
+	private TextField tfInputFilePath;
 	@FXML
-	TextField tfOutputFilePath;
-	@FXML
-	Slider sVideoInterval;
-	@FXML
-	Slider sVideoBegining;
-	@FXML
-	Slider sVideoEnding;
+	private TextField tfOutputFilePath;
+	@FXML 
+	private TextField tfIntervalAdding;
 	
-	FileManager fileEditor;
-	VideoEditor video;
+	private FileManager fileEditor;
 	
-	boolean correctVideoFile = false;
-	boolean correctOutputPath = false;
+	private boolean correctVideoFile = false;
+	private boolean correctOutputPath = false;
 	
 	public void initialize(){
 		fileEditor = new FileManager();
 	}
 	
+	/**
+	 * Handles Button Presses
+	 * @param e
+	 */
 	public void buttonPressed(ActionEvent e){
 
 		String buttonID = ((Button)(e.getSource())).getId();
@@ -48,10 +53,19 @@ public class Application_Split_Menu_Screen{
 		}else{
 			if(fileEditor.checkTextFields(tfInputFilePath.getText(), tfOutputFilePath.getText()) == true){
 				if(correctVideoFile == true && correctOutputPath == true){
-					//TODO SPLIT VIDEO
-					video.setVideo(fileEditor.getFile());
-					video.splitVideo();
-					video.saveVideo();
+					
+					Parent loader = null;
+					try {
+						loader = FXMLLoader.load(getClass().getResource(splitVideoMenuFXML));
+					} catch (IOException er) {
+						er.printStackTrace();
+					}
+					Scene scene = new Scene(loader);
+					scene.getStylesheets().add(getClass().getResource(applicationGeneralStyle).toExternalForm());
+					Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+					stage.setScene(scene);
+					stage.show();
+					
 				}				
 			}
 		}

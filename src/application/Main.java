@@ -1,9 +1,6 @@
 package application;
 
-import java.util.prefs.Preferences;
-
 import javax.swing.JOptionPane;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -27,7 +24,6 @@ public class Main extends Application implements Constants{
 			Parent root = FXMLLoader.load(getClass().getResource(mainScreenFXML));
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource(applicationGeneralStyle).toExternalForm());
-			Preferences pref = Preferences.userRoot();
 			primaryStage.setMinWidth(250.0);
 			primaryStage.setMinHeight(200.0);
 			primaryStage.setScene(scene);
