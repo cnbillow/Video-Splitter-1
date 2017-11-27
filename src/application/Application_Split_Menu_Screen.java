@@ -1,16 +1,9 @@
 package application;
 
-import java.io.IOException;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 public class Application_Split_Menu_Screen implements Constants{
 	
@@ -18,6 +11,10 @@ public class Application_Split_Menu_Screen implements Constants{
 	private Button btnInputFilePath;
 	@FXML
 	private Button btnOutputFilePath;
+	@FXML
+	private Button btnSubmitInfo;
+	@FXML
+	private Button btnStartSplittingAndSaving;
 	@FXML
 	private TextField tfInputFilePath;
 	@FXML
@@ -29,6 +26,7 @@ public class Application_Split_Menu_Screen implements Constants{
 	
 	private boolean correctVideoFile = false;
 	private boolean correctOutputPath = false;
+	private boolean submitButtonPressed = false;
 	
 	public void initialize(){
 		fileEditor = new FileManager();
@@ -50,22 +48,30 @@ public class Application_Split_Menu_Screen implements Constants{
 		}else if(buttonID.equals(btnOutputFilePath.getId())){
 			correctOutputPath = fileEditor.getOutputPath(tfOutputFilePath);
 			//Split Button Pressed
+		}else if(buttonID.equals(btnSubmitInfo.getId())){
+			if(submitButtonPressed == false){
+				btnInputFilePath.setDisable(true);
+				btnOutputFilePath.setDisable(true);
+				tfInputFilePath.setDisable(true);
+				tfOutputFilePath.setDisable(true);
+				tfIntervalAdding.setDisable(true);
+				btnStartSplittingAndSaving.setDisable(false);
+				btnSubmitInfo.setText("Undo");
+				submitButtonPressed = true;
+			}else{
+				btnInputFilePath.setDisable(!true);
+				btnOutputFilePath.setDisable(!true);
+				tfInputFilePath.setDisable(!true);
+				tfOutputFilePath.setDisable(!true);
+				tfIntervalAdding.setDisable(!true);
+				btnStartSplittingAndSaving.setDisable(!false);
+				btnSubmitInfo.setText("Submit");
+				submitButtonPressed = false;
+			}
 		}else{
 			if(fileEditor.checkTextFields(tfInputFilePath.getText(), tfOutputFilePath.getText()) == true){
 				if(correctVideoFile == true && correctOutputPath == true){
-					
-					Parent loader = null;
-					try {
-						loader = FXMLLoader.load(getClass().getResource(splitVideoMenuFXML));
-					} catch (IOException er) {
-						er.printStackTrace();
-					}
-					Scene scene = new Scene(loader);
-					scene.getStylesheets().add(getClass().getResource(applicationGeneralStyle).toExternalForm());
-					Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-					stage.setScene(scene);
-					stage.show();
-					
+					VideEditor ve = new VideoEditor();
 				}				
 			}
 		}

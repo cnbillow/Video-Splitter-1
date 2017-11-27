@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -44,8 +43,13 @@
                </children>
             </HBox>
             <Label text="Video Interval:" />
-            <TextField fx:id="tfIntervalAdding" />
-            <Slider showTickLabels="true" showTickMarks="true" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <TextField fx:id="tfIntervalAdding" prefHeight="25.0" prefWidth="434.0" />
+                  <Label prefHeight="17.0" prefWidth="70.0" text="Seconds" />
+               </children>
+            </HBox>
+            <Button fx:id="btnSubmitInfo" mnemonicParsing="false" onAction="#buttonPressed" prefHeight="25.0" prefWidth="533.0" text="Submit" />
             <Label text="Video Info:" />
             <HBox alignment="CENTER" prefHeight="10.0" prefWidth="520.0" spacing="20.0">
                <children>
@@ -64,6 +68,6 @@
       </VBox>
    </center>
    <bottom>
-      <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#buttonPressed" prefHeight="41.0" prefWidth="600.0" text="Split" BorderPane.alignment="CENTER" />
+      <Button fx:id="btnStartSplittingAndSaving" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#buttonPressed" prefHeight="41.0" prefWidth="600.0" text="Split" BorderPane.alignment="CENTER" />
    </bottom>
 </BorderPane>
